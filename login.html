@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeMyTrip Clone - Travel Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        /* Header Styles */
+        header {
+            background-color: #003580;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+        }
+        nav a:hover {
+            background-color: #ff6600;
+            border-radius: 4px;
+        }
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .tab-menu {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+        .tab-menu button {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .tab-menu button.active {
+            background-color: #ff6600;
+            color: white;
+            border-color: #ff6600;
+        }
+        .search-section {
+            display: none;
+        }
+        .search-section.active {
+            display: block;
+        }
+        .search-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .search-box div {
+            width: 45%;
+            margin-bottom: 10px;
+        }
+        .search-box input, .search-box select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .search-btn {
+            background-color: #ff6600;
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #003580;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Travel Booking</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#">Flights</a>
+        <a href="#">Hotels</a>
+        <a href="#">Holiday Packages</a>
+        <a href="#">Trains</a>
+        <a href="#">Support</a>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Tabs for Flight, Hotel, Holiday Search -->
+        <div class="tab-menu">
+            <button class="active" onclick="showSection('flights')">Flights</button>
+            <button onclick="showSection('hotels')">Hotels</button>
+            <button onclick="showSection('holidays')">Holiday Packages</button>
+        </div>
+
+        <!-- Flights Search Form -->
+        <div id="flights" class="search-section active">
+            <h2>Search Flights</h2>
+            <div class="search-box">
+                <div>    
+                    <input type="text" placeholder="From">
+                </div>
+                <div>
+                    <input type="text" placeholder="To">
+                </div>
+                <div>
+                    <input type="date" placeholder="Departure Date">
+                </div>
+                <div>
+                    <input type="date" placeholder="Return Date">
+                </div>
+                <div>
+                    <select>
+                        <option value="economy">Economy</option>
+                        <option value="business">Business</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="number" placeholder="Passengers">
+                </div>
+            </div>
+            <button class="search-btn" onclick="showFlights('Flights')">Search Flights</button>
+        </div>
+
+        <!-- Hotels Search Form -->
+        <div id="hotels" class="search-section">
+            <h2>Search Hotels</h2>
+            <div class="search-box">
+                <div>
+                    <input type="text" placeholder="Destination">
+                </div>
+                <div>
+                    <input type="date" placeholder="Check-in Date">
+                </div>
+                <div>
+                    <input type="date" placeholder="Check-out Date">
+                </div>
+                <div>
+                    <select>
+                        <option value="1">1 Room, 1 Guest</option>
+                        <option value="2">1 Room, 2 Guests</option>
+                    </select>
+                </div>
+            </div>
+            <button class="search-btn">Search Hotels</button>
+        </div>
+
+        <!-- Holiday Packages Search Form -->
+        <div id="holidays" class="search-section">
+            <h2>Search Holiday Packages</h2>
+            <div class="search-box">
+                <div>
+                    <input type="text" placeholder="Destination">
+                </div>
+                <div>
+                    <input type="date" placeholder="Start Date">
+                </div>
+                <div>
+                    <select>
+                        <option value="couple">Couple</option>
+                        <option value="family">Family</option>
+                    </select>
+                </div>
+            </div>
+            <button class="search-btn">Search Holiday Packages</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Travel Booking</p>
+    </footer>
+
+    <script>
+        // JavaScript to toggle between sections
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.search-section');
+            const buttons = document.querySelectorAll('.tab-menu button');
+            
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            document.querySelector(button[onclick="showSection('${sectionId}')"]).classList.add('active');
+        }
+    </script>
+</body>
+</html>
